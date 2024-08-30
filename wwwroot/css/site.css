@@ -18,5 +18,71 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+
+    font-family: 'Arial', sans-serif;
+    background-color: #f5e6e8; /* Light pink background */
+    color: #4b2e2e; /* Darker text color */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #ffe6e6; /* Lighter pink navbar background */
+    padding: 15px;
+}
+
+.navbar-brand, .nav-link {
+    color: #4b2e2e !important; /* Darker pink/brown for links */
+}
+
+.navbar-nav .nav-link.active {
+    background-color: #f3c1c6; /* Active link background color */
+    border-radius: 5px;
+}
+
+/* Container styling */
+.form-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Button styling */
+.btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+/* Form control styling */
+.form-control {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+/* Footer styling */
+.footer {
+    background-color: #f3c1c6; /* Matching footer background to navbar active link color */
+    color: #4b2e2e; /* Footer text color */
+    padding: 20px 0;
+    text-align: center;
 }

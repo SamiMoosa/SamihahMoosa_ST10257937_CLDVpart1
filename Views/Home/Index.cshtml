@@ -1,24 +1,36 @@
 ﻿@model ST10257937cldv.Models.CustomerProfile
 
-<form asp-action="UploadImage" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" />
-    <button type="submit">Upload Image</button>
-</form>
+<!-- Profile Image Upload Section -->
+<div class="form-container">
+    <form asp-action="UploadImage" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" class="form-control" />
+        <button type="submit" class="btn">Upload Image</button>
+    </form>
+</div>
 
-<form asp-action="AddCustomerProfile" method="post">
-    <input type="text" name="FirstName" placeholder="First Name" />
-    <input type="text" name="LastName" placeholder="Last Name" />
-    <input type="email" name="Email" placeholder="Email" />
-    <input type="text" name="PhoneNumber" placeholder="Phone Number" />
-    <button type="submit">Add Profile</button>
-</form>
+<!-- Customer Profile Form Section -->
+<div class="form-container">
+    <form asp-action="AddCustomerProfile" method="post">
+        <input type="text" name="FirstName" placeholder="First Name" class="form-control" />
+        <input type="text" name="LastName" placeholder="Last Name" class="form-control" />
+        <input type="email" name="Email" placeholder="Email" class="form-control" />
+        <input type="text" name="PhoneNumber" placeholder="Phone Number" class="form-control" />
+        <button type="submit" class="btn">Add Profile</button>
+    </form>
+</div>
 
-<form asp-action="ProcessOrder" method="post">
-    <input type="text" name="orderId" placeholder="Order ID" />
-    <button type="submit">Process Order</button>
-</form>
+<!-- Order Processing Form Section -->
+<div class="form-container">
+    <form asp-action="ProcessOrder" method="post">
+        <input type="text" name="orderId" placeholder="Order ID" class="form-control" />
+        <button type="submit" class="btn">Process Order</button>
+    </form>
+</div>
 
-<form asp-action="UploadContract" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" />
-    <button type="submit">Upload Contract</button>
-</form>
+<!-- Contract Upload Form Section -->
+<div class="form-container">
+    <form asp-action="UploadContract" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" class="form-control" />
+        <button type="submit" class="btn">Upload Contract</button>
+    </form>
+</div>

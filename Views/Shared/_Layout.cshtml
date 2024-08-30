@@ -3,85 +3,106 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SemesterTwo</title>
+    <title>@ViewData["Title"] ABC Retail</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SemesterTwo.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ABCRetail.styles.css" asp-append-version="true" />
+
+    <!-- Inline styles can be moved to your CSS file if preferred -->
     <style>
-        /* General Styling */
+        /* Apply overall theme colors */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f5f3; /* Beige background */
-            color: #333;
+            background-color: #f5e6e8; /* Light pink background */
+            color: #4b2e2e; /* Darker color for text */
         }
 
-        /* Navbar Styling */
         .navbar {
-            background-color: #fce4ec; /* Light pink */
-            border-bottom: 2px solid #f8bbd0; /* Slightly darker pink */
+            background-color: #ffe6e6; /* Lighter pink for navbar */
         }
 
-        .navbar-brand {
-            color: #880e4f; /* Dark pink */
+        .navbar-brand, .nav-link {
+            color: #4b2e2e !important; /* Darker pink/brown for links */
         }
 
-        .nav-link {
-            color: #ad1457; /* Medium pink */
+        .navbar-nav .nav-link.active {
+            background-color: #f3c1c6; /* Active link color */
         }
 
-        .nav-link:hover {
-            color: #880e4f; /* Dark pink on hover */
-        }
-
-        /* Footer Styling */
         footer {
-            background-color: #f8bbd0; /* Light pink */
-            color: #fff;
-            padding: 20px 0;
+            background-color: #f3c1c6; /* Matching footer to navbar active link color */
         }
 
-        footer a {
-            color: #ffffff; /* White text */
+        .btn-primary {
+            background-color: #f5b7b1;
+            border-color: #f5b7b1;
         }
 
-        /* Main Content Styling */
-        main {
-            padding: 20px;
-            background-color: #ffffff; /* White background */
+            .btn-primary:hover {
+                background-color: #e18c8c;
+                border-color: #e18c8c;
+            }
+
+        .container {
+            background-color: #ffffff; /* White container background */
             border-radius: 8px;
+            padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
 
-        /* Button Styling */
-        button {
-            background-color: #e91e63; /* Vivid pink */
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-top: 10px;
+        .form-control {
+            border-color: #f3c1c6; /* Form field border color */
         }
 
-        button:hover {
-            background-color: #c2185b; /* Darker pink on hover */
-        }
+            .form-control:focus {
+                border-color: #e18c8c;
+                box-shadow: none;
+            }
 
-        /* Form Styling */
-        input[type="text"],
-        input[type="email"],
-        input[type="file"] {
-            border: 1px solid #f8bbd0; /* Light pink border */
-            border-radius: 4px;
-            padding: 8px;
-            margin: 8px 0;
-            width: 100%;
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+            color: #4b2e2e; /* Footer text color */
         }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ABC Retail</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
 
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="file"]:focus {
-            border-color: #880e4f; /* Dark pink on focus */
-            outline: none;
-        }
+    <footer class="footer text-muted">
+        <div class="container">
+            &copy; 2024 - ABC Retail - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
 
-      
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
