@@ -1,90 +1,54 @@
-//using ST10257937cldv.Services;
+//using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+//using Microsoft.Extensions.Hosting;
+//using Microsoft.Azure.WebJobs.Extensions.Storage.Blobs;
+//using Microsoft.Azure.WebJobs.Extensions.Storage.Queues;
+//using Microsoft.Azure.Functions.Worker;
+//using Microsoft.Extensions.DependencyInjection;
 
-//namespace ST10257937cldv
-//{
-//    public class Program
+//var host = new HostBuilder()
+//    .ConfigureFunctionsWebApplication()
+//    .ConfigureServices(services =>
 //    {
-//        public static void Main(string[] args)
-//        {
-//            var builder = WebApplication.CreateBuilder(args);
+//        services.AddApplicationInsightsTelemetryWorkerService();
+//        services.ConfigureFunctionsApplicationInsights();
 
-//            // Add services to the container.
-//            builder.Services.AddControllersWithViews();
+//    })
+//    .ConfigureWebJobs(b =>
+//    {
+//        // Register specific storage bindings
+//        b.AddHttp();
+//        b.AddAzureStorageBlobs(); // For Blob Storage functions
+//        b.AddAzureStorageQueues(); // For Queue Storage functions
+//        // b.AddAzureStorageQueuesScaleForTrigger(); // Add this if scaling is needed for Queue Triggers
+//    })
+//    .Build();
 
-//            // Register your custom services
-//            builder.Services.AddSingleton<BlobService>();
-//            builder.Services.AddSingleton<TableService>();
-//            builder.Services.AddSingleton<QueueService>();
-//            builder.Services.AddSingleton<FileService>();
+//host.Run();
 
-//            var app = builder.Build();
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Azure.WebJobs.Extensions.Storage.Blobs;
+using Microsoft.Azure.WebJobs.Extensions.Storage.Queues;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Extensions.DependencyInjection;
 
-//            // Configure the HTTP request pipeline.
-//            if (!app.Environment.IsDevelopment())
-//            {
-//                app.UseExceptionHandler("/Home/Error");
-//                app.UseHsts();
-//            }
-
-//            app.UseHttpsRedirection();
-//            app.UseStaticFiles();
-
-//            app.UseRouting();
-
-//            app.UseAuthorization();
-
-//            app.MapControllerRoute(
-//                name: "default",
-//                pattern: "{controller=Home}/{action=Index}/{id?}");
-
-//            app.Run();
-//        }
-//    }
-//}
-
-using ST10257937cldv.Services;
-
-namespace ST10257937cldv
-{
-    public class Program
+var host = new HostBuilder()
+    .ConfigureFunctionsWebApplication()
+    .ConfigureServices(services =>
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+        services.AddApplicationInsightsTelemetryWorkerService();
+        services.ConfigureFunctionsApplicationInsights();
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+        // Register HttpClientFactory for Azure Functions
+        services.AddHttpClient();
+    })
+    .ConfigureWebJobs(b =>
+    {
+        // Register specific storage bindings
+        b.AddHttp();
+        b.AddAzureStorageBlobs(); // For Blob Storage functions
+        b.AddAzureStorageQueues(); // For Queue Storage functions
+    })
+    .Build();
 
-            // Register IHttpClientFactory to use in services
-            builder.Services.AddHttpClient();
-
-            // Register your custom services
-            builder.Services.AddSingleton<BlobService>();
-            builder.Services.AddSingleton<TableService>();
-            builder.Services.AddSingleton<QueueService>();
-            builder.Services.AddSingleton<FileService>();
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            app.Run();
-        }
-    }
-}
+host.Run();
